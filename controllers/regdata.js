@@ -11,21 +11,39 @@ HashGenerator=async(pass)=>{
 router.post("/signup",async(req,res)=>{
     let {data}={"data":req.body}
     let password=data.password
-    HashGenerator(password).then(
-        (hashedPassword)=>{
+    //
+//     HashGenerator(password).then(
+//         (hashedPassword)=>{
+// data.password=hashedPassword
+// console.log(data)
+//     let load = new regsignupmodal(data)
+//     let result= load.save()
+//     res.json(
+//         {
+//         status:"success"
+//     })
+//         }
+//     )    
+
+//
+//or
+const hashedPassword=await HashGenerator(password)
 data.password=hashedPassword
-console.log(data)
-    let load = new regsignupmodal(data)
-    let result= load.save()
+let load = new regsignupmodal(data)
+let result= load.save()
     res.json(
         {
         status:"success"
     })
-        }
-    )
-
-
-    
 })
+
+
+router.post("/login",async(req,res)=>{
+    let email=req.body.email
+    let password=req.body.password
+    
+}
+    
+)
 
 module.exports=router
