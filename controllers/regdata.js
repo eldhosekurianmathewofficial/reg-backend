@@ -39,8 +39,38 @@ let result= load.save()
 
 
 router.post("/login",async(req,res)=>{
+    let data=req.body
     let email=req.body.email
-    let password=req.body.password
+    let input=await regsignupmodal.findOne({"email":email})
+    if (!input){
+        return res.json({
+            status:"invalid user"
+        })
+    }
+    else{
+
+
+        console.log(input)
+        let dbPass=input.password
+        let orgPass=req.body.password
+        console.log(dbPass)
+        console.log(orgPass)
+        const match = await bcrypt.compare(orgPass,dbPass)
+        if(!match)
+        {
+            return res.json({
+                status:"incoorect password"
+            })
+        }
+        else{
+            res.json(
+                {
+                status:"success"
+            })
+        }
+    }
+   
+    
     
 }
     
