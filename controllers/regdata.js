@@ -30,6 +30,7 @@ router.post("/signup",async(req,res)=>{
 const hashedPassword=await HashGenerator(password)
 data.password=hashedPassword
 let load = new regsignupmodal(data)
+
 let result= load.save()
     res.json(
         {
