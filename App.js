@@ -2,6 +2,7 @@ const express=require("express")
 const cors=require("cors")
 const mongoose=require("mongoose")
 const data=require("./controllers/regdata")
+const postRouter=require("./controllers/postRouter")
 
 const exp=express()
 exp.use(express.json())
@@ -10,6 +11,7 @@ mongoose.connect("mongodb+srv://eldhosekurianofficial:Jesusislove123@cluster0.uf
     useNewUrlParser:true
 })
 exp.use("/api/registeration",data)
+exp.use("/api/post",postRouter)
 exp.listen(3001,()=>{
     console.log("Status Running")
 })
