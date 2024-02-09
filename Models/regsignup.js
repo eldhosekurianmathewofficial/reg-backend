@@ -8,4 +8,4 @@ const signupSchema=mongoose.Schema({
     email:String,
     password:String
 })
-module.exports=mongoose.model("signup",signupSchema)
+module.exports=mongoose.model("user",signupSchema)
