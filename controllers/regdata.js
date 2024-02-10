@@ -60,13 +60,13 @@ router.post("/login",async(req,res)=>{
         if(!match)
         {
             return res.json({
-                status:"incoorect password"
+                status:"incorrect password"
             })
         }
         else{
             res.json(
                 {
-                status:"success"
+                status:"success","userData":input
             })
         }
     }
